@@ -18,13 +18,13 @@ A modern, cross-platform desktop music player built with Electron.
 
 ### Download Pre-built Binaries
 
-Download the latest release for your platform from the [Releases](https://github.com/meloplay/releases) page.
+Download the latest release for your platform from the [Releases](https://github.com/YihyunCS/releases) page.
 
 ### Build from Source
 
 ```bash
 # Clone the repository
-git clone https://github.com/meloplay/meloplay.git
+git clone https://github.com/YihyunCS/meloplay.git
 cd meloplay
 
 # Install dependencies
