@@ -1,0 +1,88 @@
+{
+  "name": "meloplay",
+  "version": "1.0.0",
+  "description": "A modern, cross-platform desktop music player built with Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --mac --win --linux",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux",
+    "build:arm": "electron-builder --arm64",
+    "postinstall": "node install_dependencies.js",
+    "test-youtube": "python test_youtube_downloader.py",
+    "test-soundcloud": "python test_soundcloud_downloader.py"
+  },
+  "keywords": [
+    "music",
+    "player",
+    "electron",
+    "youtube"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "music-metadata": "^7.13.4",
+    "node-id3": "^0.2.6"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.meloplay.app",
+    "productName": "MeloPlay",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist/**/*",
+      "!node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "assets",
+        "to": "assets"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.png"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "public.app-category.music",
+      "darkModeSupport": true
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "assets/icon.png",
+      "category": "Audio"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "meloplay",
+      "repo": "meloplay"
+    }
+  }
+}

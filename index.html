@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+  <title>MeloPlay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Custom Title Bar -->
+    <div class="title-bar">
+      <div class="title-bar-drag-area">
+        <div class="logo">
+          <i class="fas fa-music"></i>
+          <h1>MeloPlay</h1>
+        </div>
+      </div>
+      <div class="window-controls">
+        <button id="minimize-btn" class="window-control-btn" title="Minimize"><i class="fas fa-window-minimize"></i></button>
+        <button id="maximize-btn" class="window-control-btn" title="Maximize"><i class="fas fa-window-maximize"></i></button>
+        <button id="close-btn" class="window-control-btn" title="Close"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    
+    <header>
+      <button id="import-btn"><i class="fas fa-plus"></i> Add Music</button>
+    </header>
+    
+    <div class="main-content">
+      <div class="player-container">
+        <div class="now-playing">
+          <div class="album-art">
+            <img id="albumArt" src="assets/default-album.png" alt="Album Art">
+          </div>
+          <div class="song-info">
+            <h2 id="current-song-title">No song selected</h2>
+          </div>
+        </div>
+        
+        <div class="controls">
+          <div class="progress-container">
+            <span id="currentTime">0:00</span>
+            <div class="progress-bar">
+              <div id="progress"></div>
+            </div>
+            <span id="totalTime">0:00</span>
+          </div>
+          
+          <div class="buttons">
+            <button id="prevBtn"><i class="fas fa-step-backward"></i></button>
+            <button id="playBtn" class="play-btn"><i class="fas fa-play"></i></button>
+            <button id="nextBtn"><i class="fas fa-step-forward"></i></button>
+            <button id="repeatBtn" title="Repeat" class="control-btn"><i class="fas fa-redo"></i></button>
+            <div class="volume-control">
+              <i class="fas fa-volume-up"></i>
+              <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.7">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="library">
+        <div class="library-header">
+          <h2>Your Library</h2>
+          <button id="refresh-btn" title="Refresh Library"><i class="fas fa-sync-alt"></i></button>
+          <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search songs...">
+          </div>
+        </div>
+        <div id="song-list" class="songs-list">
+          <!-- Songs will be populated here -->
+          <p id="no-songs">No songs found. Add some music to get started!</p>
+        </div>
+        
+        <!-- Download Section -->
+        <div class="download-section">
+          <h3><i class="fas fa-download"></i> Download Music</h3>
+          <div class="download-form">
+            <input type="text" id="download-url" placeholder="Paste YouTube or SoundCloud URL here...">
+            <button id="download-btn"><i class="fas fa-cloud-download-alt"></i> Download</button>
+          </div>
+          <div id="download-status" class="download-status"></div>
+          <div class="progress-indicator">
+            <progress id="download-progress" value="0" max="100"></progress>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <audio id="audio-player"></audio>
+  
+  <script src="renderer.js"></script>
+</body>
+</html> 
